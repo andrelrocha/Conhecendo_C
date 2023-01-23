@@ -14,6 +14,7 @@ int main()
 
     //for (i=0; i<3; i++)
     while (i<3) {
+        printf("Guess %d out of 3\n", (i+1));
         printf("What's your guess? ");
         scanf("%d", &chuteUsuario);
         printf("Your guess was %d.\n", chuteUsuario);
