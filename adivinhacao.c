@@ -10,18 +10,27 @@ int main()
 
     int chuteUsuario;
 
-    printf("What's your guess? ");
-    scanf("%d", &chuteUsuario);
-    printf("Your guess was %d.\n", chuteUsuario);
+    int i = 0;
 
-    if (numeroSecreto == chuteUsuario) {
-        printf("Congratulations! You've guessed right.\n");
-    } else {
-        if (chuteUsuario > numeroSecreto) {
-            printf("Your guess was higher than the secret number.\n");
+    //for (i=0; i<3; i++)
+    while (i<3) {
+        printf("What's your guess? ");
+        scanf("%d", &chuteUsuario);
+        printf("Your guess was %d.\n", chuteUsuario);
+
+        int acertou = (numeroSecreto == chuteUsuario);
+        if (acertou) {
+            printf("Congratulations! You've guessed right.\n");
+            break;
         } else {
-            printf("Your guess was lower than the secret number.\n");
-        } 
-        printf("You didn't find the secret number.\n");
+            i++;
+            int maior = (chuteUsuario > numeroSecreto);
+            if (maior) {
+                printf("Your guess was higher than the secret number.\n");
+            } else {
+                printf("Your guess was lower than the secret number.\n");
+            } 
+            printf("You didn't find the secret number.\n");
+        }
     }
 }
