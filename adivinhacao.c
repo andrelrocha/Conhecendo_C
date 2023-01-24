@@ -16,8 +16,7 @@ int main()
     int i = 0;
 
     // for (int i = 0; i<3; i++)
-    while (i < NUMERO_DE_TENTATIVAS)
-    {
+    while (i < NUMERO_DE_TENTATIVAS) {
         printf("Guess %d out of %d\n", (i + 1), NUMERO_DE_TENTATIVAS);
         printf("What's your guess? ");
         scanf("%d", &chute_usuario);
@@ -26,31 +25,29 @@ int main()
         if (chute_usuario < 0) 
         {
             printf("You can't guess negative numbers.\n");
-            i--;
             continue;
         }
 
         int acertou = (numero_secreto == chute_usuario);
-        int acabou_tentativas = (i == NUMERO_DE_TENTATIVAS)
-        if (acertou)
-        {
+        int acabou_tentativas = (i == (NUMERO_DE_TENTATIVAS-1));
+        if (acertou) {
             printf("Congratulations! You've guessed right.\n");
             break;
         }
-        else
-        {
+        else {
             i++;
             int maior = (chute_usuario > numero_secreto);
-            if (maior)
-            {
-                printf("Your guess was higher than the secret number.\n");
-            }
-            else
-            {
-                printf("Your guess was lower than the secret number.\n");
-            }
+            
             if (acabou_tentativas) {
             printf("You didn't find the secret number.\n");
+            break;
+            }
+
+            if (maior) {
+                printf("Your guess was higher than the secret number.\n");
+            }
+            else {
+                printf("Your guess was lower than the secret number.\n");
             }
         }
     }
