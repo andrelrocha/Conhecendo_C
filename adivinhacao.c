@@ -1,36 +1,46 @@
 #include <stdio.h>
 
+// cria uma const
+#define NUMERO_DE_TENTATIVAS 5
+
 int main()
 {
     printf("********************************\n");
     printf("* Welcome to the guessing game *\n");
     printf("********************************\n");
 
-    int numeroSecreto = 13;
+    int numero_secreto = 13;
 
-    int chuteUsuario;
+    int chute_usuario;
 
     int i = 0;
 
-    //for (i=0; i<3; i++)
-    while (i<3) {
-        printf("Guess %d out of 3\n", (i+1));
+    // for (int i = 0; i<3; i++)
+    while (i < NUMERO_DE_TENTATIVAS)
+    {
+        printf("Guess %d out of %d\n", (i + 1), NUMERO_DE_TENTATIVAS);
         printf("What's your guess? ");
-        scanf("%d", &chuteUsuario);
-        printf("Your guess was %d.\n", chuteUsuario);
+        scanf("%d", &chute_usuario);
+        printf("Your guess was %d.\n", chute_usuario);
 
-        int acertou = (numeroSecreto == chuteUsuario);
-        if (acertou) {
+        int acertou = (numero_secreto == chute_usuario);
+        if (acertou)
+        {
             printf("Congratulations! You've guessed right.\n");
             break;
-        } else {
+        }
+        else
+        {
             i++;
-            int maior = (chuteUsuario > numeroSecreto);
-            if (maior) {
+            int maior = (chute_usuario > numero_secreto);
+            if (maior)
+            {
                 printf("Your guess was higher than the secret number.\n");
-            } else {
+            }
+            else
+            {
                 printf("Your guess was lower than the secret number.\n");
-            } 
+            }
             printf("You didn't find the secret number.\n");
         }
     }
