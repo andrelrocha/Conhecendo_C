@@ -15,6 +15,8 @@ int main()
 
     int i = 0;
 
+    int pontos = 1000;
+
     // for (int i = 0; i<3; i++)
     while (i < NUMERO_DE_TENTATIVAS) {
         printf("Guess %d out of %d\n", (i + 1), NUMERO_DE_TENTATIVAS);
@@ -30,16 +32,20 @@ int main()
 
         int acertou = (numero_secreto == chute_usuario);
         int acabou_tentativas = (i == (NUMERO_DE_TENTATIVAS-1));
+        int pontos_perdidos = ((chute_usuario - numero_secreto) / 2);
         if (acertou) {
             printf("Congratulations! You've guessed right.\n");
+            printf("Total de pontos: %d\n", pontos); 
             break;
         }
         else {
             i++;
+            pontos -= pontos_perdidos;
             int maior = (chute_usuario > numero_secreto);
             
             if (acabou_tentativas) {
             printf("You didn't find the secret number.\n");
+            printf("Total de pontos: %d\n", pontos); 
             break;
             }
 
@@ -49,6 +55,6 @@ int main()
             else {
                 printf("Your guess was lower than the secret number.\n");
             }
-        }
+        }   
     }
 }
