@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // cria uma const
 #define NUMERO_DE_TENTATIVAS 5
@@ -32,7 +33,8 @@ int main()
 
         int acertou = (numero_secreto == chute_usuario);
         int acabou_tentativas = (i == (NUMERO_DE_TENTATIVAS-1));
-        double pontos_perdidos = ((chute_usuario - numero_secreto) / 2.0);
+        double pontos_perdidos = abs((double)(chute_usuario - numero_secreto)) / 2;
+
         if (acertou) {
             printf("Congratulations! You've guessed right.\n");
             printf("Total de pontos: %.1f\n", pontos); 
