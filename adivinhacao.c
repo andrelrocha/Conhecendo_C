@@ -23,7 +23,15 @@ int main()
         scanf("%d", &chute_usuario);
         printf("Your guess was %d.\n", chute_usuario);
 
+        if (chute_usuario < 0) 
+        {
+            printf("You can't guess negative numbers.\n");
+            i--;
+            continue;
+        }
+
         int acertou = (numero_secreto == chute_usuario);
+        int acabou_tentativas = (i == NUMERO_DE_TENTATIVAS)
         if (acertou)
         {
             printf("Congratulations! You've guessed right.\n");
@@ -41,7 +49,9 @@ int main()
             {
                 printf("Your guess was lower than the secret number.\n");
             }
+            if (acabou_tentativas) {
             printf("You didn't find the secret number.\n");
+            }
         }
     }
 }
