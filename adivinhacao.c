@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-// cria uma const
-#define NUMERO_DE_TENTATIVAS 5
+#include <time.h>
 
 int main()
 {
@@ -10,46 +8,39 @@ int main()
     printf("* Welcome to the guessing game *\n");
     printf("********************************\n");
 
-    int numero_secreto = 13;
+    srand(time(0));
+    
+    int numero_secreto = rand() % 100;
 
     int chute_usuario;
 
-    int i = 0;
+    int i = 1;
 
     double pontos = 1000;
 
-    // for (int i = 0; i<3; i++)
-    while (i < NUMERO_DE_TENTATIVAS) {
-        printf("Guess %d out of %d\n", (i + 1), NUMERO_DE_TENTATIVAS);
+    while (i) {
+        printf("Guess %d\n", i);
         printf("What's your guess? ");
         scanf("%d", &chute_usuario);
         printf("Your guess was %d.\n", chute_usuario);
 
-        if (chute_usuario < 0) 
-        {
+        if (chute_usuario < 0) {
             printf("You can't guess negative numbers.\n");
             continue;
         }
 
         int acertou = (numero_secreto == chute_usuario);
-        int acabou_tentativas = (i == (NUMERO_DE_TENTATIVAS-1));
         double pontos_perdidos = abs((double)(chute_usuario - numero_secreto)) / 2;
 
         if (acertou) {
             printf("Congratulations! You've guessed right.\n");
-            printf("Total de pontos: %.1f\n", pontos); 
+            printf("Total points: %.1f\n", pontos); 
             break;
         }
         else {
             i++;
             pontos -= pontos_perdidos;
             int maior = (chute_usuario > numero_secreto);
-            
-            if (acabou_tentativas) {
-            printf("You didn't find the secret number.\n");
-            printf("Total de pontos: %.1f\n", pontos); 
-            break;
-            }
 
             if (maior) {
                 printf("Your guess was higher than the secret number.\n");
