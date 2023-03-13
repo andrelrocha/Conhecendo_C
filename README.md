@@ -1,3 +1,3 @@
-# Conhecendo C
+# Guessing Game in C
 
-Código feito a partir do Curso "Conhecendo C" da Alura
+Simple code in C for a guessing game.
