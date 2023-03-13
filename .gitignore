@@ -2,3 +2,4 @@
 
 //ignore all files with.exe
 *.exe
+!v.0.1.0.exe
